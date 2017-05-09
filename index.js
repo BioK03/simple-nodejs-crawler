@@ -16,7 +16,9 @@ app.get('/crawler', function(req, res, next) {
   new(require("js-crawler"))().configure({ depth: 1 }).crawl(url, function onSuccess(page) {
 
     var longUrl = (url.endsWith("/")) ? url : (url + "/");
-    var shortUrl = (url.replace("http://", "").replace("https://", "")).split("/")[0];
+
+    var shortUrl = (url.replace("http://", "http:").replace("https://", "https:")).split("/")[0];
+    shortUrl = shortUrl.replace("http:", "http://").replace("https:", "https://");
 
     const dom = new JSDOM(page.content);
 
@@ -43,10 +45,12 @@ app.get('/crawler', function(req, res, next) {
       }
     }
 
+    dom.window.document.querySelector("head").insertAdjacentHTML('beforeend', '<meta charset="UTF-8">');
+
     res.send(dom.window.document.querySelector("html").innerHTML);
   });
 });
 
 app.listen(3000, function() {
-  console.log('Example app listening on port 3000!')
+  console.log('Simple Node Crawler listening on port 3000!')
 });
