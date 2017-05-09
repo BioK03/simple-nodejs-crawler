@@ -1,0 +1,25 @@
+{
+  "name": "lkinto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BioK03/lkinto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BioK03/lkinto/issues"
+  },
+  "homepage": "https://github.com/BioK03/lkinto#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "js-crawler": "^0.3.19",
+    "jsdom": "^10.1.0"
+  }
+}
